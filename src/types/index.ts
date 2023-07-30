@@ -6,6 +6,7 @@ export enum Calendars {
   Gregory = 'Gregory',
   Jalali = 'Jalali',
 }
+
 export enum Entities {
   year = 'year',
   month = 'month',
@@ -18,41 +19,42 @@ export enum Entities {
 }
 
 export enum Parts {
-  YYYY,
-  YY,
-  MMMM,
-  MMM,
-  MM,
-  M,
-  DD,
-  D,
-  dddd,
-  ddd,
-  dd,
-  d,
-  HH,
-  H,
-  hh,
-  h,
-  mm,
-  m,
-  SSS,
-  ss,
-  s,
-  Z,
-  A,
-  a,
+  YYYY = 'YYYY',
+  YY = 'YY',
+  MMMM = 'MMMM',
+  MMM = 'MMM',
+  MM = 'MM',
+  M = 'M',
+  DD = 'DD',
+  D = 'D',
+  dddd = 'dddd',
+  ddd = 'ddd',
+  dd = 'dd',
+  d = 'd',
+  HH = 'HH',
+  H = 'H',
+  hh = 'hh',
+  h = 'h',
+  mm = 'mm',
+  m = 'm',
+  SSS = 'SSS',
+  ss = 'ss',
+  s = 's',
+  Z = 'Z',
+  A = 'A',
+  a = 'a',
 }
 
 export enum CalendarModes {
-  Normal,
-  Dialog,
-  Modal,
+  Normal = 'Normal',
+  Dialog = 'Dialog',
+  Modal = 'Modal',
 }
 
+// METHODS
 export type SetYear = (year: number) => void;
 
-// type guards
+// TYPE GUARDS
 export function isCalendar(v: string | null): v is keyof typeof Calendars {
   console.log(typeof v in Calendars);
   if (v) {

@@ -1,27 +1,81 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
+// TYPES
+import { Calendars } from './types';
+
 export class WcDp extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--wc-dp-text-color, #000);
+  /**
+   * STYLES
+   */
+  static override styles = css`
+    :host ::slotted(open-datepicker-input) {
+      display: flex;
     }
   `;
 
-  @property({ type: String }) header = 'Hey there';
+  /**
+   * PROPERTIES
+   */
+  @property({ attribute: true })
+  public calendar: Calendars = Calendars.Gregory;
 
-  @property({ type: Number }) counter = 5;
+  @property({ type: String, attribute: true })
+  public locale: string = '';
 
-  __increment() {
-    this.counter += 1;
+  @property({ type: Number, attribute: true })
+  public timestamp: number = new Date().getTime();
+
+  /**
+   * LISTENERS
+   */
+  // private onCalendarLoad() {}
+
+  /**
+   * HANDLERS
+   */
+  // private handleCalendarChange(calendar: Calendars): void {
+  //   // if (!config.calendars.has(this.calendar)) {
+  //   //   config.calendars.asyncAdd(this.calendar);
+  //   //   eventBus.on('on-calendar-load', this.onCalendarLoad);
+  //   // } else {
+  //   //   if (config.calendars.has(this.calendar)) {
+  //   //     this.config();
+  //   //   }
+  //   // }
+  //   // if (Object.values(Calendars).includes(calendar)) {
+  //   //   this.calendar = Calendars[calendar];
+  //   // }
+  // }
+
+  /**
+   * LIFE CYCLE
+   */
+  override attributeChangedCallback(
+    name: string,
+    _old: string | null,
+    value: string | null,
+  ): void {
+    switch (name) {
+      case 'calendar':
+        // this.handleCalendarChange(value as unknown as Calendars);
+        break;
+      case 'locale':
+        console.log('locale', value);
+        break;
+      case 'timestamp':
+        console.log('timestamp', value);
+        break;
+      default:
+        break;
+    }
   }
 
-  render() {
+  override render() {
     return html`
-      <h2>${this.header} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
+      <div>
+        <slot></slot>
+      </div>
     `;
   }
 }

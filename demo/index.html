@@ -16,7 +16,10 @@
       import '../dist/src/wc-dp.js';
 
       const header = 'Hello owc World!';
-      render(html` <wc-dp> </wc-dp> `, document.querySelector('#demo'));
+      render(
+        html` <wc-dp calendar="Jalali"> </wc-dp> `,
+        document.querySelector('#demo'),
+      );
     </script>
   </body>
 </html>
